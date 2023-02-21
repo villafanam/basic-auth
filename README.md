@@ -2,24 +2,25 @@
 
 ## Project: basic-auth
 
-### Author: Student/Group Name
+### Author: Marco Villafana
 
 ### Problem Domain  
 
-Concise Description of why this app exists
+Given “monolithic” express server in the starter-code folder which fulfills the requirements. Refactor the provided server using best practices, modularizing the code and providing tests, as follows.
 
 ### Links and Resources
 
-- [GitHub Actions ci/cd](https://github.com/rkgallaway/server-deployment-practice-d51/actions) 
-- [back-end server url](http://xyz.com) (when applicable)
-- [front-end application](http://xyz.com) (when applicable)
+- [GitHub Actions ci/cd](https://github.com/villafanam/basic-auth/actions)
+- [GitHub PR](https://github.com/villafanam/basic-auth/pull/1)
+- [back-end server url](http://xyz.com)
+
 
 ### Setup
 
 #### `.env` requirements (where applicable)
 
-for now I have none and do not require one
-
+- `PORT=3001`
+- `DATABASE_URL=postgres://localhost:5432/api-app`
 
 #### How to initialize/run your application (where applicable)
 
