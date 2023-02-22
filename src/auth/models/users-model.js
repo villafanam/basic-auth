@@ -1,7 +1,8 @@
 'use strict';
+const bcrypt = require('bcrypt');
 
-module.exports = (sequelizeDatabase, DataTypes) => {
-  return sequelizeDatabase.define('User', {
+const userSchema = (sequelizeDatabase, DataTypes) => {
+  const model = sequelizeDatabase.define('User', {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -11,5 +12,17 @@ module.exports = (sequelizeDatabase, DataTypes) => {
       allowNull: false,
     },
   });
+
+  // sequelize allows ua to interact with the usermodel before adding data to the database using the beforeCreate hook.
+  model.beforeCreate(async (user) => {
+    let hashedPassword = await bcrypt.hash(user.password, 5);
+    console.log('hashed password in before create', hashedPassword);
+    user.password = hashedPassword;
+  });
+
+  return model;
+
 };
+
+module.exports = userSchema;
 

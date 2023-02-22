@@ -1,11 +1,11 @@
 'use strict';
 
-const Users = require('../models');
+const {userModel} = require('../models');
 
 const bcrypt = require('bcrypt');
 const base64 = require('base-64');
 
-const basicAuth = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   /*
    req.headers.authorization is : "Basic am9objpmb28="
    To get username and password from this, take the following steps:
@@ -29,8 +29,12 @@ const basicAuth = async (req, res, next) => {
     3. Either we're valid or we throw an error
   */
   try {
-    const user = await Users.findOne({ where: { username: username } });
+    const user = await userModel.findOne({ where: { username: username }});
+    // console.log(user.password);
+    // console.log(password);
+
     const valid = await bcrypt.compare(password, user.password);
+    console.log({valid});
     if (valid) {
       req.user = user;
       next();
@@ -41,4 +45,4 @@ const basicAuth = async (req, res, next) => {
   } catch (error) { next('Invalid Login'); }
 };
 
-module.exports = basicAuth;
+// module.exports = basicAuth;
