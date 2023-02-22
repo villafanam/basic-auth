@@ -12,7 +12,7 @@ Given “monolithic” express server in the starter-code folder which fulfills 
 
 - [GitHub Actions ci/cd](https://github.com/villafanam/basic-auth/actions)
 - [GitHub PR](https://github.com/villafanam/basic-auth/pull/1)
-- [back-end server url](http://xyz.com)
+- [back-end server url](https://basic-auth-ylbf.onrender.com)
 
 
 ### Setup
@@ -31,14 +31,15 @@ Given “monolithic” express server in the starter-code folder which fulfills 
 #### Features / Routes
 
 - Feature One: Details of feature
-- GET : `/hello` - specific route to hit
+- POST : `/signup` - create a new user
+- POST : `/signin` - to login as a user (use basic auth).
 
 #### Tests
 
-- How do you run tests?
-- Any tests of note?
-- Describe any tests that you did not complete, skipped, etc
+- create a new user
 
 #### UML
 
-Link to an image of the UML for your application and response to events
+![Lab 06 UML](/assets/lab06_uml.png)
+
+[From Class 06 UML](https://projects.invisionapp.com/freehand/document/QWqOYAP19)

@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const basicAuth = require('./middleware/basic');
-const Users = require('./models/');
+const {userModel} = require('./models/');
 
 const bcrypt = require('bcrypt');
 //const base64 = require('base-64');
@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
     const { username, password } = req.body;
     console.log('username: ', username, 'password: ', password);
     const encryptedPassword = await bcrypt.hash(password, 10);
-    const record = await Users.create({
+    const record = await userModel.create({
       username, 
       password: encryptedPassword,
     });
@@ -36,8 +36,8 @@ router.post('/signup', async (req, res) => {
 // test with httpie
 // http post :3000/signin -a john:foo
 router.post('/signin', basicAuth, (req, res) => {
-  let {user} = req.user;
-  res.status(200).send({user});
+  // let {user} = req.user;
+  res.status(200).send(req.user);
 
 });
 
